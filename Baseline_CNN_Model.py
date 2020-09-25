@@ -20,12 +20,6 @@ from keras.layers import Flatten
 from keras.optimizers import SGD
 from keras.preprocessing.image import ImageDataGenerator
 
-# what is max pooling and filters?
-# reLU actiavtion function
-# He wight initilization
-# momentum in stochaitsic gradient descent
-# binary cross-entropy loss function
-# epochs?
 # cross entroy loss -> train usually lower than test
 #                      train and test both high -> underfit
 #                      train and test diverge significantly -> overfit (to the train data)
@@ -34,8 +28,10 @@ from keras.preprocessing.image import ImageDataGenerator
 def define_model_1_block():
 	model = Sequential()
 	model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same', input_shape=(200, 200, 3)))
+	# max pooling and filters
 	model.add(MaxPooling2D((2, 2)))
 	model.add(Flatten())
+	# reLU actiavtion function
 	model.add(Dense(128, activation='relu', kernel_initializer='he_uniform'))
 	model.add(Dense(1, activation='sigmoid'))
 	# compile model
